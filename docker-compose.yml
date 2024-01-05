@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clean-node-typescript-app
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./.prettierrc.json:/app/.prettierrc.json
+      - ./.eslintrc.json:/app/.eslintrc.json
+      - ./jest.config.js:/app/jest.config.js
+      - ./.env:/app/.env
+      - ./node_modules:/app/node_modules
+      - ./package.json:/app/package.json
+    ports:
+      - "${DOCKER_PORT}:3000"
+      - "9229:9229"
+    command: ["npm", "run", "dev"]

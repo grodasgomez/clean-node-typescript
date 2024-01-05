@@ -1,0 +1,27 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended" // Add this line
+  ],
+  "parser": "@typescript-eslint/parser", // Specify the TypeScript parser
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-prototype-builtins": "off"
+  },
+  "overrides": [ // This section is to ensure ESLint processes .ts and .tsx files
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"] // Point to your TS config file
+      }
+    }
+  ]
+}
